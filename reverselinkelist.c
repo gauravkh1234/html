@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 struct node
 {
     int data;
@@ -8,12 +7,11 @@ struct node
 };
 
 typedef struct node *nodeptr;
-
 nodeptr create(nodeptr slist)
 {
     int i,n;
     nodeptr temp,newnode;
-    printf("how many nodes:");
+    printf("how many numbers:\n");
     scanf("%d",&n);
     printf("enter %d numbers",n);
     for(i=0;i<n;i++)
@@ -43,32 +41,28 @@ void display(nodeptr slist)
         temp=temp->next;
     }
 }
-void bsort(nodeptr slist)
+nodeptr reverse(nodeptr slist)
 {
-    nodeptr p,q,end;
-    for(end=NULL;end!=slist->next;end=p)
+    nodeptr current=slist;
+    nodeptr prev=NULL;
+    nodeptr nextptr;
+    while(current!=NULL)
     {
-        for(p=slist;p->next!=end;p=p->next)
-        {
-            q=p->next;
-            if(p->data >q->data)
-            {
-                int t=p->data;
-                p->data=q->data;
-                q->data=t;
-            }
-
-        }
+        nextptr=current->next;
+        current->next=prev;
+        prev=current;
+        current=nextptr;
     }
+    return prev;
 }
 int main()
 {
     nodeptr slist=NULL;
     slist=create(slist);
-    printf("\n data before sorting\n");
+    printf("\ndata before sort\n");
     display(slist);
-    bsort(slist);
-    printf("\n data after sorting\n");
+    slist=reverse(slist);
+    printf("\n data after sort\n");
     display(slist);
     return(0);
 }

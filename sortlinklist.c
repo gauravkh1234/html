@@ -1,19 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node
+struct node 
 {
     int data;
     struct node *next;
 };
-
 typedef struct node *nodeptr;
-
 nodeptr create(nodeptr slist)
 {
     int i,n;
-    nodeptr temp,newnode;
-    printf("how many nodes:");
+    nodeptr newnode,temp;
+    printf("how many nudes:\n");
     scanf("%d",&n);
     printf("enter %d numbers",n);
     for(i=0;i<n;i++)
@@ -26,8 +24,7 @@ nodeptr create(nodeptr slist)
             slist=newnode;
             temp=newnode;
         }
-        else
-        {
+        else{
             temp->next=newnode;
             temp=newnode;
         }
@@ -43,7 +40,7 @@ void display(nodeptr slist)
         temp=temp->next;
     }
 }
-void bsort(nodeptr slist)
+void b_sort(nodeptr slist)
 {
     nodeptr p,q,end;
     for(end=NULL;end!=slist->next;end=p)
@@ -51,13 +48,12 @@ void bsort(nodeptr slist)
         for(p=slist;p->next!=end;p=p->next)
         {
             q=p->next;
-            if(p->data >q->data)
+            if(p->data > q->data)
             {
                 int t=p->data;
                 p->data=q->data;
                 q->data=t;
             }
-
         }
     }
 }
@@ -67,8 +63,8 @@ int main()
     slist=create(slist);
     printf("\n data before sorting\n");
     display(slist);
-    bsort(slist);
-    printf("\n data after sorting\n");
+    b_sort(slist);
+    printf("\n data after sort\n ");
     display(slist);
     return(0);
 }
