@@ -1,3 +1,7 @@
-newnode->next=dlist;
-    dlist->prev=newnode;
-    dlist=n
+
+        {
+           return i;
+        }
+    }
+    return -1;
+}

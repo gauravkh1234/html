@@ -1,5 +1,5 @@
 #include<stdio.h>
-void insertion_sort(int n,int a[])
+void insertion_sort(int a[],int n)
 {
     int i,j,temp;
     for(i=0;i<n;i++)
@@ -10,7 +10,6 @@ void insertion_sort(int n,int a[])
         {
             a[j+1]=a[j];
             j--;
-
         }
         a[j+1]=temp;
     }
@@ -25,7 +24,7 @@ int main()
     {
         scanf("%d",&a[i]);
     }
-    insertion_sort(n,a);
+    insertion_sort(a,n);
     printf("\n after sorting elements");
     for(i=0;i<n;i++)
     {
